@@ -1,5 +1,8 @@
 export default function Index() {
   return (
-    <div className="bg-fuchsia-600">index</div>
+    <div className={`
+    flex justify-center items-center h-screen
+    bg-gradient-to-r from-green-500 to-blue-500
+    `}>index</div>
   )
 }
