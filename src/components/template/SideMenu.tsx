@@ -6,8 +6,8 @@ export default function SideMenu() {
     <aside>
       <ul>
         <ItemMenu url="/" text="Início" icon={HomeIcon} />
-        <ItemMenu url="/ajustes" text="Configuração" icon={CalendarIcon} />
-        <ItemMenu url="/agenda" text="Agenda" icon={SettingsIcon} />
+        <ItemMenu url="/agenda" text="Agenda" icon={CalendarIcon} />
+        <ItemMenu url="/configuracao" text="Configuração" icon={SettingsIcon} />
         <ItemMenu url="/Sair" text="Sair" icon={ExitIcon} />
       </ul>
     </aside>
