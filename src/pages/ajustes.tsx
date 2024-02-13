@@ -1,6 +1,6 @@
 import Layout from "../components/template/Layout";
 
-export default function configuracao() {
+export default function ajustes() {
   return (
     <Layout
       title="Configuração"
