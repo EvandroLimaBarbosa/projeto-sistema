@@ -1,7 +1,8 @@
 export default function LogoDestakVidros() {
   return (
     <div className={`
-      bg-white
+      bg-white text:black
+      dark:bg-black dark:text:white
     `}>
       <div className={`
         `}>
