@@ -11,8 +11,5 @@ export default function ajustes() {
       subtitle="Configure o sistema por aqui!">
       <h3>Ajustes</h3>
       <button type="button" onClick={alternarTema}>click</button>
-      <div className={`flex`}>
-        <BotaoAlternarTema tema={tema} alternarTema={alternarTema}/>
-      </div>
     </Layout>)
 }
