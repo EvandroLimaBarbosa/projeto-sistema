@@ -16,13 +16,15 @@ export default function BotaoAlternarTema(props: BotaoAlternarTemaProps) {
       bg-white text-yellow-600
         w-6 h-6 rounded-full
       `}>
-        <span className="text-sm">{SunIcon(5)}</span>
+        {SunIcon(5)}
       </div>
       <div className={`
         hidden lg:flex items-center ml-4
         text-white
       `}>
-        Claro
+        <span className="text-sm">
+          Claro
+        </span>
       </div>
     </div>
   ) : (

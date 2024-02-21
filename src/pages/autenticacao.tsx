@@ -18,13 +18,24 @@ export default function Autenticacao() {
   }
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center">
-      <div className="w-1/2">
-        <h1 className={`
-        flex items-center justify-center text-xl font-bold mb-3
-      `}>
+    <div className="flex h-screen justify-center bg-blue-950">
+      <div className="hidden md:block md:w-1/2 lg:w-2/3">
+        <img
+          src="https://source.unsplash.com/random"
+          alt="Imagem da Tela de Autenticacao"
+          className="h-screen w-full object-cover" />
+      </div>
+      <div className="m-10 w-full md:w-1/2 lg:w-1/3">
+        <div className="flex flex-col justify-center items-center mt-5 mb-14">
           <Logo />
-          {/* {modo === 'login' ? 'Login' : 'Cadastro'} */}
+        </div>
+        <div className={`
+          bg-white py-8 px-7 lg:px-10 rounded-xl
+        `}>
+        <h1 className={`
+        flex items-center justify-center text-xl font-bold mb-8
+        `}>
+          {modo === 'login' ? 'Entre com Sua Conta' : 'Crie uma Nova Conta'}
         </h1>
         <AuthInput
           label="Email"
@@ -45,7 +56,7 @@ export default function Autenticacao() {
           value={confirmPassword}
           changeValue={setConfirmPassword}
           required
-          noRenderWhen={true} />
+          noRenderWhen={modo === 'cadastro'} />
 
         <button type="button" onClick={submit}
           className={`
@@ -70,6 +81,24 @@ export default function Autenticacao() {
       `}>
           Entrar com Google
         </button>
+        {modo === 'login' ? (
+          <p className="mt-8">
+            Novo aqui ?
+            <a onClick={() => setModo('cadastro')} className={`
+              text-blue-500 hover:text-blue-700 font-semibold
+              cursor-pointer
+            `}> Crie uma nova conta</a>
+          </p>
+        ) : (
+          <p className="mt-8">
+            Já tem cadastro?
+            <a onClick={() => setModo('login')} className={`
+              text-blue-500 hover:text-blue-700 font-semibold
+              cursor-pointer
+            `}> Entre com sua conta</a>
+          </p>
+        )}
+        </div>
       </div>
     </div>
   )
