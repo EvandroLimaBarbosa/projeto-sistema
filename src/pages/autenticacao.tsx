@@ -1,25 +1,33 @@
 import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
-import { GoogleIcon } from "../components/icons";
+import { GoogleIcon, WarnIcon } from "../components/icons";
 import Logo from "../components/template/Logo";
 
 export default function Autenticacao() {
+  const [erro, setErro] = useState(null)
   const [modo, setModo] = useState<'login' | 'cadastro'>('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
+  const displayError = (msg: any, timeInSeconds: number = 5) => {
+    setErro(msg)
+    setTimeout(() => { setErro(null) }, timeInSeconds * 1000)
+  }
+
   const submit = () => {
     if (modo === 'login') {
       console.log('login')
+      displayError('Ocorreu um erro no login!')
     } else {
       console.log('cadastrar')
+      displayError('Ocorreu um erro no cadastro!')
     }
   }
 
   return (
-    <div className="flex h-screen justify-center bg-blue-950">
-      <div className="hidden md:block md:w-1/2 lg:w-2/3">
+    <div className="flex h-screen md:h-full justify-center bg-blue-950">
+      <div className="hidden md:block md:h-full md:w-1/2 lg:w-2/3">
         <img
           src="https://source.unsplash.com/random"
           alt="Imagem da Tela de Autenticacao"
@@ -32,72 +40,85 @@ export default function Autenticacao() {
         <div className={`
           bg-white py-8 px-7 lg:px-10 rounded-xl
         `}>
-        <h1 className={`
-        flex items-center justify-center text-xl font-bold mb-8
+          <h1 className={`
+            flex items-center justify-center text-xl font-bold mb-5
         `}>
-          {modo === 'login' ? 'Entre com Sua Conta' : 'Crie uma Nova Conta'}
-        </h1>
-        <AuthInput
-          label="Email"
-          type="email"
-          value={email}
-          changeValue={setEmail}
-          required
-        />
-        <AuthInput
-          label="Senha"
-          type="password"
-          value={password}
-          changeValue={setPassword}
-          required />
-        <AuthInput
-          label="Confirmar senha"
-          type="password"
-          value={confirmPassword}
-          changeValue={setConfirmPassword}
-          required
-          noRenderWhen={modo === 'cadastro'} />
+            {modo === 'login' ? 'Entre com Sua Conta' : 'Crie uma Nova Conta'}
+          </h1>
 
-        <button type="button" onClick={submit}
-          className={`
+            <div className={`
+                flex items-center 
+                rounded-lg
+                transition-opacity duration-500 ease-in-out
+                bg-red-400 text-white py-3 px-5 mb-2 
+                ${erro ? 'opacity-100' : 'opacity-0'}
+                `}>
+              {WarnIcon()}
+              <span className={`ml-2 ${erro ? 'opacity-100' : 'opacity-0'}`}>{erro}</span>
+            </div>
+
+
+          <AuthInput
+            label="Email"
+            type="email"
+            value={email}
+            changeValue={setEmail}
+            required
+          />
+          <AuthInput
+            label="Senha"
+            type="password"
+            value={password}
+            changeValue={setPassword}
+            required />
+          <AuthInput
+            label="Confirmar senha"
+            type="password"
+            value={confirmPassword}
+            changeValue={setConfirmPassword}
+            required
+            noRenderWhen={modo === 'login'} />
+
+          <button type="button" onClick={submit}
+            className={`
             w-full bg-indigo-500 hover:bg-indigo-400
            text-white rounded-lg px-4 py-3 mt-2
       `}>
-          {modo === 'login' ? 'Entrar' : 'Cadastrar'}
-        </button>
+            {modo === 'login' ? 'Entrar' : 'Cadastrar'}
+          </button>
 
-        <div className="flex flex-row h-6 my-1">
-          <div className="h-px flex-grow bg-gray-300 top-3 relative block shrink">
+          <div className="flex flex-row h-6 my-1">
+            <div className="h-px flex-grow bg-gray-300 top-3 relative block shrink">
+            </div>
+            <div className="flex justify-center items-center uppercase font-semibold text-xs text-gray-400 mx-4 relative">ou</div>
+            <div className="h-px flex-grow bg-gray-300 top-3 relative block shrink">
+            </div>
           </div>
-          <div className="flex justify-center items-center uppercase font-semibold text-xs text-gray-400 mx-4 relative">ou</div>
-          <div className="h-px flex-grow bg-gray-300 top-3 relative block shrink">
-          </div>
-        </div>
 
-        <button type="button" onClick={submit}
-          className={`
+          <button type="button" onClick={submit}
+            className={`
             w-full bg-red-500 hover:bg-red-400
           text-white rounded-lg px-4 py-3
       `}>
-          Entrar com Google
-        </button>
-        {modo === 'login' ? (
-          <p className="mt-8">
-            Novo aqui ?
-            <a onClick={() => setModo('cadastro')} className={`
+            Entrar com Google
+          </button>
+          {modo === 'login' ? (
+            <p className="mt-8">
+              Novo aqui ?
+              <a onClick={() => setModo('cadastro')} className={`
               text-blue-500 hover:text-blue-700 font-semibold
               cursor-pointer
             `}> Crie uma nova conta</a>
-          </p>
-        ) : (
-          <p className="mt-8">
-            Já tem cadastro?
-            <a onClick={() => setModo('login')} className={`
+            </p>
+          ) : (
+            <p className="mt-8">
+              Já tem cadastro?
+              <a onClick={() => setModo('login')} className={`
               text-blue-500 hover:text-blue-700 font-semibold
               cursor-pointer
             `}> Entre com sua conta</a>
-          </p>
-        )}
+            </p>
+          )}
         </div>
       </div>
     </div>
