@@ -2,8 +2,10 @@ import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
 import { GoogleIcon, WarnIcon } from "../components/icons";
 import Logo from "../components/template/Logo";
+import useAuth from "../data/hook/useAuth";
 
 export default function Autenticacao() {
+  const {user, loginGoogle} = useAuth()
   const [erro, setErro] = useState(null)
   const [modo, setModo] = useState<'login' | 'cadastro'>('login')
   const [email, setEmail] = useState('')
@@ -46,16 +48,16 @@ export default function Autenticacao() {
             {modo === 'login' ? 'Entre com Sua Conta' : 'Crie uma Nova Conta'}
           </h1>
 
-            <div className={`
+          <div className={`
                 flex items-center 
                 rounded-lg
                 transition-opacity duration-500 ease-in-out
                 bg-red-400 text-white py-3 px-5 mb-2 
                 ${erro ? 'opacity-100' : 'opacity-0'}
                 `}>
-              {WarnIcon()}
-              <span className={`ml-2 ${erro ? 'opacity-100' : 'opacity-0'}`}>{erro}</span>
-            </div>
+            {WarnIcon()}
+            <span className={`ml-2 ${erro ? 'opacity-100' : 'opacity-0'}`}>{erro}</span>
+          </div>
 
 
           <AuthInput

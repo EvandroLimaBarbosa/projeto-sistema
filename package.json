@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "firebase": "^10.8.0",
     "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18",
     "typescript": "latest"
   },
   "devDependencies": {
+    "@types/firebase": "^3.2.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
