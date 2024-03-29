@@ -3,6 +3,6 @@ export default interface User {
   email: string | null;
   name: string | null;
   token: string;
-  provider: string;
+  provider: any;
   imgUrl: string | null;
 }
