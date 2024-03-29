@@ -97,7 +97,7 @@ export default function Autenticacao() {
             </div>
           </div>
 
-          <button type="button" onClick={submit}
+          <button type="button" onClick={loginGoogle}
             className={`
             w-full bg-red-500 hover:bg-red-400
           text-white rounded-lg px-4 py-3
