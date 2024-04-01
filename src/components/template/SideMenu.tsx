@@ -1,8 +1,11 @@
+import useAuth from "../../data/hook/useAuth";
 import { CalendarIcon, ComputerIcon, ExitIcon, HomeIcon, SettingsIcon } from "../icons";
 import ItemMenu from "./ItemMenu";
 import Logo from "./Logo";
 
 export default function SideMenu() {
+  const { logout } = useAuth()
+
   return (
     <aside className={`
       flex flex-col bg-gray-200 text-gray-700
@@ -25,7 +28,7 @@ export default function SideMenu() {
         <ItemMenu className={`
           text-red-600 hover:bg-red-500 hover:text-white  
           dark:text-red-400 dark:hover:bg-red-700 dark:hover:text-white
-        `} onClick={() => console.log('saiu')} text="Sair" icon={ExitIcon} />
+        `} onClick={logout} text="Sair" icon={ExitIcon} />
       </ul>
     </aside>
   )
