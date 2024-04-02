@@ -1,0 +1,38 @@
+import Image from 'next/image'
+import loadingSvg from '../../../public/images/loading.svg'
+import useAuth from '@/src/data/hook/useAuth'
+import route from 'next/router'
+
+export default function ForceAuth(props: any) {
+     const { user, loading } = useAuth()
+
+     function renderizarConteudo() {
+          return (
+               <>
+                    {props.children}
+               </>
+          )
+     }
+
+     function renderizarCarregando() {
+          return (
+               <div className="
+                    flex justify-center items-center h-screen
+               ">
+                    <Image
+                         src={loadingSvg}
+                         alt='Loading'
+                    />
+               </div>
+          )
+     }
+
+     if (!loading && user?.email) {
+          return renderizarConteudo()
+     } else if(loading) {
+          return renderizarCarregando()
+     } else {
+          route.push('/autenticacao')
+          return null
+     }
+}

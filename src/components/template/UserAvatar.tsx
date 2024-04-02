@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import useAuth from '../../data/hook/useAuth'
 import Link from 'next/link'
 

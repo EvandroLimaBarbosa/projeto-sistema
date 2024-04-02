@@ -43,7 +43,7 @@ export default function Autenticacao() {
           bg-white py-8 px-7 lg:px-10 rounded-xl
         `}>
           <h1 className={`
-            flex items-center justify-center text-xl font-bold mb-5
+            flex items-center justify-center text-xl font-bold
         `}>
             {modo === 'login' ? 'Entre com Sua Conta' : 'Crie uma Nova Conta'}
           </h1>
@@ -52,7 +52,7 @@ export default function Autenticacao() {
                 flex items-center 
                 rounded-lg
                 transition-opacity duration-500 ease-in-out
-                bg-red-400 text-white py-3 px-5 mb-2 
+                bg-red-400 text-white px-5 mb-2 
                 ${erro ? 'opacity-100' : 'opacity-0'}
                 `}>
             {WarnIcon()}
