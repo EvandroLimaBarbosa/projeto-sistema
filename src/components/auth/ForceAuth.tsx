@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import loadingSvg from '../../../public/images/loading.svg'
 import useAuth from '@/src/data/hook/useAuth'
@@ -9,6 +10,17 @@ export default function ForceAuth(props: any) {
      function renderizarConteudo() {
           return (
                <>
+                    <Head>
+                         <script
+                              dangerouslySetInnerHTML={{
+                                   __html: `
+                                        if(!document.cookie?.includes("admin-template-projeto-auth")){
+                                             window.location.href = "/autenticacao"
+                                        }
+                                   `
+                              }}
+                         />
+                    </Head>
                     {props.children}
                </>
           )

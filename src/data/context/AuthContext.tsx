@@ -27,9 +27,9 @@ async function userNormal(userFirebase: firebase.User): Promise<User> {
     }
 }
 
-function gerenciarCookie(logado: string) {
+function gerenciarCookie(logado: boolean) {
     if (logado) {
-        Cookies.set('admin-template-projeto-auth', logado, {
+        Cookies.set('admin-template-projeto-auth', String(logado), {
             expires: 7
         })
     } else {
@@ -38,18 +38,19 @@ function gerenciarCookie(logado: string) {
 }
 
 export function AuthProvider(props: any) {
-    const [user, setUser] = useState<User | null>(null)
     const [loading, setLoading] = useState(true)
+    const [user, setUser] = useState<User | null>(null)
 
     async function configSession(userFirebase: any) {
         if (userFirebase?.email) {
             const user = await userNormal(userFirebase)
             setUser(user)
-            gerenciarCookie('logado');
+            gerenciarCookie(true);
+            setLoading(false)
             return user.email
         } else {
             setUser(null)
-            gerenciarCookie('');
+            gerenciarCookie(false);
             setLoading(false)
             return false
         }
