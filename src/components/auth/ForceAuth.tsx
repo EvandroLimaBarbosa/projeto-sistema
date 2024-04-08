@@ -1,7 +1,8 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import Image from 'next/image'
 import loadingSvg from '../../../public/images/loading.svg'
-import useAuth from '@/src/data/hook/useAuth'
+import useAuth from '../../../src/data/hook/useAuth'
 import route from 'next/router'
 
 export default function ForceAuth(props: any) {
@@ -11,7 +12,7 @@ export default function ForceAuth(props: any) {
           return (
                <>
                     <Head>
-                         <script
+                         <Script
                               dangerouslySetInnerHTML={{
                                    __html: `
                                         if(!document.cookie?.includes("admin-template-projeto-auth")){
