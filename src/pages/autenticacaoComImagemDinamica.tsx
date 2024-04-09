@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
 import { GoogleIcon, WarnIcon } from "../components/icons";
-import LogoDestakVidros from "../components/template/LogoDestakVidros";
+import Logo from "../components/template/Logo";
 import useAuth from "../data/hook/useAuth";
 
 export default function Autenticacao() {
@@ -51,10 +51,16 @@ export default function Autenticacao() {
 
 
   return (
-    <div className="flex min-h-screen justify-center bg-blue-950">
+    <div className="flex h-auto md:h-full justify-center bg-blue-950">
+      <div className="hidden md:block md:h-auto md:w-1/2 lg:w-2/3">
+        <img
+          src="https://source.unsplash.com/random"
+          alt="Imagem da Tela de Autenticacao"
+          className="h-screen w-full object-cover" />
+      </div>
       <div className="m-10 w-full md:w-1/2 lg:w-1/3">
         <div className="flex flex-col justify-center items-center mt-5 mb-14">
-          <LogoDestakVidros />
+          <Logo />
         </div>
         <div className={`
           bg-white py-8 px-7 lg:px-10 rounded-xl
@@ -99,7 +105,7 @@ export default function Autenticacao() {
               noRenderWhen={modo === 'login'} />
             <button type="submit"
               className={`
-                w-full bg-sky-600 hover:bg-sky-500
+                w-full bg-indigo-500 hover:bg-indigo-400
               text-white rounded-lg px-4 py-3 mt-2
               `}>
               {modo === 'login' ? 'Entrar' : 'Cadastrar'}
@@ -122,12 +128,12 @@ export default function Autenticacao() {
             Entrar com Google
           </button>
           {modo === 'login' ? (
-            <p className="flex justify-center mt-8">
+            <p className="mt-8">
               Novo aqui ?
               <a onClick={() => setModo('cadastro')} className={`
               text-blue-500 hover:text-blue-700 font-semibold
-              cursor-pointer ml-1
-            `}>Crie uma nova conta</a>
+              cursor-pointer
+            `}> Crie uma nova conta</a>
             </p>
           ) : (
             <p className="mt-8">
