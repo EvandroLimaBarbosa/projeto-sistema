@@ -51,7 +51,10 @@ export default function Autenticacao() {
 
 
   return (
-    <div className="flex min-h-screen justify-center bg-blue-950">
+    <div className={`
+          flex min-h-screen justify-center 
+          bg-gradient-to-b from-sky-950 via-blue-900 to-blue-900
+      `}>
       <div className="m-10 w-full md:w-1/2 lg:w-1/3">
         <div className="flex flex-col justify-center items-center mt-5 mb-14">
           <LogoDestakVidros />
