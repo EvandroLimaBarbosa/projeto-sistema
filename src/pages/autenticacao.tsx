@@ -5,7 +5,7 @@ import LogoDestakVidros from "../components/template/LogoDestakVidros";
 import useAuth from "../data/hook/useAuth";
 
 export default function Autenticacao() {
-  const { cadastrar, login, loginGoogle } = useAuth()
+  const { cadastrar, login } = useAuth()
 
   const [erro, setErro] = useState(null)
   const [modo, setModo] = useState<'login' | 'cadastro'>('login')
@@ -20,7 +20,6 @@ export default function Autenticacao() {
 
   const submit = async (event: any) => {
     event.preventDefault();
-    console.log('Botão clicado');
     try {
       if (modo === 'login') {
         if (login) {
@@ -40,7 +39,7 @@ export default function Autenticacao() {
         displayError('A senha deve ter pelo menos 6 caracteres')
       } else if (e.code == "auth/invalid-email") {
         displayError('O endereço de email está formatado incorretamente')
-      } else if (e.code == "auth/internal-error"){
+      } else if (e.code == "auth/internal-error") {
         displayError('Erro ao fazer autenticação')
       } else {
         console.log(e)
@@ -49,18 +48,17 @@ export default function Autenticacao() {
     }
   }
 
-
   return (
     <div className={`
           flex min-h-screen justify-center 
-          bg-gradient-to-b from-sky-950 via-blue-900 to-blue-900
+          bg-gradient-to-b from-gray-950 via-gray-900 to-gray-800
       `}>
       <div className="m-10 w-full md:w-1/2 lg:w-1/3">
         <div className="flex flex-col justify-center items-center mt-5 mb-14">
           <LogoDestakVidros />
         </div>
         <div className={`
-          bg-white py-8 px-7 lg:px-10 rounded-xl
+          bg-gray-300 py-8 px-7 lg:px-10 rounded-xl
         `}>
           <h1 className={`
             flex items-center justify-center text-xl font-bold
@@ -112,18 +110,11 @@ export default function Autenticacao() {
           <div className="flex flex-row h-6 my-1">
             <div className="h-px flex-grow bg-gray-300 top-3 relative block shrink">
             </div>
-            <div className="flex justify-center items-center uppercase font-semibold text-xs text-gray-400 mx-4 relative">ou</div>
+            <div className="flex justify-center items-center uppercase font-semibold text-xs text-gray-400 mx-4 mt-7 relative">ou</div>
             <div className="h-px flex-grow bg-gray-300 top-3 relative block shrink">
             </div>
           </div>
 
-          <button type="button" onClick={loginGoogle}
-            className={`
-            w-full bg-red-500 hover:bg-red-400
-          text-white rounded-lg px-4 py-3
-      `}>
-            Entrar com Google
-          </button>
           {modo === 'login' ? (
             <p className="flex justify-center mt-8">
               Novo aqui ?
@@ -133,12 +124,12 @@ export default function Autenticacao() {
             `}>Crie uma nova conta</a>
             </p>
           ) : (
-            <p className="mt-8">
+            <p className="flex justify-center mt-8">
               Já tem cadastro?
               <a onClick={() => setModo('login')} className={`
               text-blue-500 hover:text-blue-700 font-semibold
-              cursor-pointer
-            `}> Entre com sua conta</a>
+              cursor-pointer ml-1
+            `}>Entre com sua conta</a>
             </p>
           )}
         </div>

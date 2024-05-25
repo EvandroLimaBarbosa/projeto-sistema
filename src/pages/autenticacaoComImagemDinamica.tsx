@@ -1,11 +1,10 @@
 import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
 import { GoogleIcon, WarnIcon } from "../components/icons";
-import Logo from "../components/template/Logo";
 import useAuth from "../data/hook/useAuth";
 
 export default function Autenticacao() {
-  const { cadastrar, login, loginGoogle } = useAuth()
+  const { cadastrar, login } = useAuth()
 
   const [erro, setErro] = useState(null)
   const [modo, setModo] = useState<'login' | 'cadastro'>('login')
@@ -20,7 +19,6 @@ export default function Autenticacao() {
 
   const submit = async (event: any) => {
     event.preventDefault();
-    console.log('Botão clicado');
     try {
       if (modo === 'login') {
         if (login) {
@@ -40,7 +38,7 @@ export default function Autenticacao() {
         displayError('A senha deve ter pelo menos 6 caracteres')
       } else if (e.code == "auth/invalid-email") {
         displayError('O endereço de email está formatado incorretamente')
-      } else if (e.code == "auth/internal-error"){
+      } else if (e.code == "auth/internal-error") {
         displayError('Erro ao fazer autenticação')
       } else {
         console.log(e)
@@ -60,7 +58,6 @@ export default function Autenticacao() {
       </div>
       <div className="m-10 w-full md:w-1/2 lg:w-1/3">
         <div className="flex flex-col justify-center items-center mt-5 mb-14">
-          <Logo />
         </div>
         <div className={`
           bg-white py-8 px-7 lg:px-10 rounded-xl
@@ -120,13 +117,6 @@ export default function Autenticacao() {
             </div>
           </div>
 
-          <button type="button" onClick={loginGoogle}
-            className={`
-            w-full bg-red-500 hover:bg-red-400
-          text-white rounded-lg px-4 py-3
-      `}>
-            Entrar com Google
-          </button>
           {modo === 'login' ? (
             <p className="mt-8">
               Novo aqui ?

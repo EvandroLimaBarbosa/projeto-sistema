@@ -11,7 +11,6 @@ interface AuthContextProps {
     loading?: boolean
     cadastrar?: (email: string, senha: string) => Promise<void>
     login?: (email: string, senha: string) => Promise<void>
-    loginGoogle?: () => Promise<void>
     logout?: () => Promise<void>
 }
 
@@ -62,7 +61,7 @@ export function AuthProvider(props: any) {
         try {
             setLoading(true)
             const resp = await firebase.auth()
-            .createUserWithEmailAndPassword(email, senha)
+                .createUserWithEmailAndPassword(email, senha)
             await configSession(resp.user)
             route.push('/')
         } finally {
@@ -74,20 +73,7 @@ export function AuthProvider(props: any) {
         try {
             setLoading(true)
             const resp = await firebase.auth()
-            .signInWithEmailAndPassword(email, senha)
-            await configSession(resp.user)
-            route.push('/')
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    async function loginGoogle() {
-        try {
-            setLoading(true)
-            const resp = await firebase.auth().signInWithPopup(
-                new firebase.auth.GoogleAuthProvider()
-            )
+                .signInWithEmailAndPassword(email, senha)
             await configSession(resp.user)
             route.push('/')
         } finally {
@@ -120,7 +106,6 @@ export function AuthProvider(props: any) {
             loading,
             cadastrar,
             login,
-            loginGoogle,
             logout
         }}>
             {props.children}

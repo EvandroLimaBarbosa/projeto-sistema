@@ -40,12 +40,14 @@ export default function ForceAuth(props: any) {
           )
      }
 
-     if (!loading && user?.email) {
-          return renderizarConteudo()
-     } else if(loading) {
-          return renderizarCarregando()
-     } else {
-          route.push('/autenticacao')
-          return null
-     }
+     return renderizarConteudo()
+     // O codigo abaixo serve para forçar a atuenticação
+     // if (!loading && user?.email) {
+     //      return renderizarConteudo()
+     // } else if(loading) {
+     //      return renderizarCarregando()
+     // } else {
+     //      route.push('/autenticacao')
+     //      return null
+     // }
 }
