@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import Layout from "../components/template/Layout";
-import TabelaAgenda from "../components/template/TabelaAgenda";
 import { useState } from "react";
+import TabelaAgenda from "../components/tabela/TabelaAgenda";
 
 export default function agenda() {
   const [dados, setDados] = useState(

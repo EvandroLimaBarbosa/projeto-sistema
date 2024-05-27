@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import LinhaTabela from "./LinhaTabela";
 import TitulosTabela from "./TitulosTabela";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import { useState } from "react";
+import LinhaTabela from "./LinhaTabela";
 
 interface TabelaAgendaProps {
     dadosAgenda: any;
@@ -20,6 +20,7 @@ export default function TabelaAgenda({ dadosAgenda }: TabelaAgendaProps) {
     };
 
     const onDragEnd = (result: any) => {
+        console.log(result)
         if (!result.destination) {
             return;
         }
