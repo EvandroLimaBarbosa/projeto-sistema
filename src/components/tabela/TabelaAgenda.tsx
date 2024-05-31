@@ -9,46 +9,23 @@ interface TabelaAgendaProps {
 }
 
 export default function TabelaAgenda({ dadosAgenda }: TabelaAgendaProps) {
-    const [dados, setDados] = useState(dadosAgenda)
-
-    function reorder<T>(list: T[], startIndex: number, endIndex: number) {
-        const result = Array.from(list);
-        const [removed] = result.splice(startIndex, 1);
-        result.splice(endIndex, 0, removed);
-
-        return result;
-    };
-
-    const onDragEnd = (result: any) => {
-        console.log(result)
-        if (!result.destination) {
-            return;
-        }
-        const items = reorder(dados, result.source.index, result.destination.index);
-
-        setDados(items);
-    }
-
-
     return (
         <Box className="my-6">
             <TitulosTabela />
-            <DragDropContext onDragEnd={onDragEnd}>
-                <Droppable droppableId="agenda" type="list" direction="vertical">
-                    {(provided) => (
-                        <article
-                            ref={provided.innerRef}
-                            {...provided.droppableProps}
-                        >
-                            {dados.map((dadosItem: any, index: number) => {
-                                return <LinhaTabela key={dadosItem.id_servico} dadosLinha={dadosItem} index={index} />
-                            })}
+            <Droppable droppableId={`id_agenda_${dadosAgenda.id_agenda}`} type="list" direction="vertical">
+                {(provided) => (
+                    <article
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                    >
+                        {dadosAgenda.dados_agenda.map((dadosItem: any, index: number) => {
+                            return <LinhaTabela key={dadosItem.id_servico} dadosLinha={dadosItem} index={index} />
+                        })}
 
-                            {provided.placeholder}
-                        </article>
-                    )}
-                </Droppable>
-            </DragDropContext>
+                        {provided.placeholder}
+                    </article>
+                )}
+            </Droppable>
         </Box>
     )
 }
