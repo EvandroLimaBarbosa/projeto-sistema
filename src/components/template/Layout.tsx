@@ -18,7 +18,8 @@ export default function Layout(props: LayoutProps) {
         <SideMenu />
         <div className={`
         flex flex-col w-full p-7 bg-gray-300
-      dark:bg-gray-800
+        dark:bg-gray-800
+        ml-20
       `}>
           <Header title={props.title ?? ''} subtitle={props.subtitle ?? ''} />
           <Content>
