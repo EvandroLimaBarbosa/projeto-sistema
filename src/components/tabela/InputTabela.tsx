@@ -8,20 +8,15 @@ interface InputTabelaProps {
 }
 
 export default function InputTabela(props: InputTabelaProps) {
-    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-        event.target.select();
-    };
-
     return (
         <Paper
-            className={`flex ${props.className}`}
+            className={`grid grid-cols-1 ${props.className}`}
             component="form"
         >
             <InputBase
-                className="flex justify-items-center p-2"
+                className="w-full p-2 border border-gray-300 rounded"
                 defaultValue={props.defaultValue}
                 placeholder={props.placeholder}
-                onFocus={handleFocus}
             />
         </Paper>
     );
