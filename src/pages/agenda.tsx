@@ -196,7 +196,6 @@ export default function agenda() {
         items-center
         justify-center
         min-h-dvh
-        bg-neutral-300
         text-black
       `}>
         <DragDropContext onDragEnd={onDragEnd}>
