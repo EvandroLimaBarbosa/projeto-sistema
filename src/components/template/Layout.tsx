@@ -11,22 +11,23 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
-  const { tema } = useAppData()
+  const { tema } = useAppData();
   return (
     <ForceAuth>
-      <div className={`${tema} flex h-screen w-screen`}>
+      <div className={`${tema} flex min-h-screen`}>
         <SideMenu />
-        <div className={`
+        <div
+          className={`
         flex flex-col w-full p-7 bg-gray-300
         dark:bg-gray-800
         ml-20
-      `}>
-          <Header title={props.title ?? ''} subtitle={props.subtitle ?? ''} />
-          <Content>
-            {props.children}
-          </Content>
+        min-h-screen
+      `}
+        >
+          <Header title={props.title ?? ""} subtitle={props.subtitle ?? ""} />
+          <Content>{props.children}</Content>
         </div>
       </div>
     </ForceAuth>
-  )
+  );
 }
