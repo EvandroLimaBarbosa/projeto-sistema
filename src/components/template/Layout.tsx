@@ -14,7 +14,7 @@ export default function Layout(props: LayoutProps) {
   const { tema } = useAppData()
   return (
     <ForceAuth>
-      <div className={`${tema} flex h-full w-screen`}>
+      <div className={`${tema} flex h-screen w-screen`}>
         <SideMenu />
         <div className={`
         flex flex-col w-full p-7 bg-gray-300
