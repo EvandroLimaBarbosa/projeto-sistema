@@ -1,0 +1,40 @@
+{
+  "name": "exercicios",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@hello-pangea/dnd": "^16.6.0",
+    "@mui/icons-material": "^5.15.18",
+    "@mui/material": "^5.15.18",
+    "@mui/x-data-grid": "^6.20.0",
+    "@mui/x-data-grid-generator": "^6.20.0",
+    "@mui/x-data-grid-pro": "^6.20.0",
+    "firebase": "^8.8.0",
+    "js-cookie": "^3.0.5",
+    "next": "13.5.6",
+    "react": "^18",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/firebase": "^3.2.1",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-beautiful-dnd": "^13.1.8",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.34",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
