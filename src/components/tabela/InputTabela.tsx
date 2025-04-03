@@ -8,6 +8,10 @@ interface InputTabelaProps {
 }
 
 export default function InputTabela(props: InputTabelaProps) {
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+        event.target.select();
+    };
+
     return (
         <Paper
             className={`flex ${props.className}`}
@@ -17,6 +21,7 @@ export default function InputTabela(props: InputTabelaProps) {
                 className="flex justify-items-center p-2"
                 defaultValue={props.defaultValue}
                 placeholder={props.placeholder}
+                onFocus={handleFocus}
             />
         </Paper>
     );
